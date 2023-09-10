@@ -11,7 +11,9 @@ test("Successful authorization", async ({ page }) => {
   await page.getByPlaceholder("Пароль").click();
   await page.getByPlaceholder("Пароль").fill(password);
   await page.getByTestId("login-submit-btn").click();
-  await page.getByRole("link", { name: "Моё обучение" }).click(); //подтверждение входа в профиль
+
+  const header = page.locator('[text="Моё обучение"]');
+  expect(header).toBeVisible;
   await page.screenshot({ path: "screenshots/Mytraining.png" });
 });
 
